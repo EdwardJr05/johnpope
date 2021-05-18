@@ -18,14 +18,14 @@ function showSlides() {
   setTimeout(showSlides, 4000); // Change image every 2 seconds
 }
 
-const navSlide = () => {
-  const burger = document.querySelector('.burger');
-  const nav = document.querySelector('.nav-links');
-  const navLinks = document.querySelectorAll('.nav-links li');
-
-  burger.addEventListener('click',() => {
-      nav.classList.toggle('nav-active');
+$(document).ready(function() {
+  // Toggle menu on click
+  $("#menu-toggler").click(function() {
+    toggleBodyClass("menu-active");
   });
-}
 
-navSlide();
+  function toggleBodyClass(className) {
+    document.body.classList.toggle(className);
+  }
+
+ });

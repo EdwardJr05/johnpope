@@ -18,14 +18,45 @@ function showSlides() {
   setTimeout(showSlides, 4000); // Change image every 2 seconds
 }
 
-$(document).ready(function() {
-  // Toggle menu on click
-  $("#menu-toggler").click(function() {
-    toggleBodyClass("menu-active");
-  });
+$(function () {
+  // script for full screen navbar
+  if ($(window).width() > 749) {
+    $(".navbar").find(".wrapperLink").show();
+    $(".navbar")
+      .find(".dropidown-button")
+      .mouseenter(function () {
+        if ($(".wrapperDropidown").hasClass("opened")) {
+          $(this).find(".dropidown-menu").css("display", "block");
+          $(this)
+            .siblings(".dropidown-button")
+            .find(".dropidown-menu")
+            .css("display", "none");
+        } else {
+          $(".wrapperDropidown").addClass("opened");
+          $(this).find(".dropidown-menu").slideDown("ease-out");
+        }
+      });
 
-  function toggleBodyClass(className) {
-    document.body.classList.toggle(className);
+    $(".navbar")
+      .find(".dropidown-button")
+      .hover(function () {
+        $(this).find(".navbar__item").toggleClass("borderBottom");
+      });
+
+    $(".wrapperDropidown").mouseleave(function () {
+      $(".dropidown-menu").stop(true, false).slideUp("ease-out");
+      $(".wrapperDropidown").removeClass("opened");
+    });
   }
 
- });
+  // script for small screen navbar
+  if ($(window).width() < 750) {
+    $(".navbar").find(".wrapperLink").hide();
+    $(".navbar")
+      .find(".wrapperBurger")
+      .click(function () {
+        $(this).next(".wrapperLink").slideToggle("ease-out");
+        $(this).toggleClass("animCross");
+      });
+  }
+});

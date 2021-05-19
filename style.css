@@ -104,6 +104,11 @@ a {
   margin: 1em;
 }
 
+.logo{
+  max-width: 100%;
+  height: auto;
+}
+
 .links {
   display: flex;
   flex-direction: column;
